@@ -20,34 +20,14 @@ public class App {
             scanner.nextLine();
 
             switch (choice) {
-                case 1: {
-                    System.out.println("Enter patients name: ");
-                    String name = scanner.nextLine();
-                    System.out.println("What is patients age: ");
-                    int age = scanner.nextInt();
-                    System.out.println("Enter patients height");
-                    double height = scanner.nextDouble();
-                    System.out.println("Enter patients weight");
-                    double weight = scanner.nextDouble();
-
-                    patient.setName(name);
-                    patient.setAge(age);
-                    patient.setHeight(height);
-                    patient.setWeight(weight);
+                case 1: {addPatient(patient,scanner);
 
 
 
                     break;
                 }
                 case 2: {
-                    String output = String.format("Patients name %s ",
-                            patient.getName());
-                    String output1 = String.format("patients age %d",
-                            patient.getAge());
-                    String output2 = String.format("patients BMI %.2f",
-                            patient.getBMI());
-
-                    System.out.println()
+                    viewPatient(patient);
 
                     break;
                 }
@@ -59,6 +39,33 @@ public class App {
 
             }
         }
+    }
+
+    private static void viewPatient(Patient patient){
+        String output = String.format("Patients name %s ",
+                patient.getName());
+        String output1 = String.format("patients age %d",
+                patient.getAge());
+        String output2 = String.format("patients BMI %.2f",
+                patient.getBMI());
+
+        System.out.println();
+    }
+    private static void addPatient(Patient patient,Scanner scanner){
+        System.out.println("Enter patients name: ");
+        String name = scanner.nextLine();
+        System.out.println("What is patients age: ");
+        int age = scanner.nextInt();
+        System.out.println("Enter patients height");
+        double height = scanner.nextDouble();
+        System.out.println("Enter patients weight");
+        double weight = scanner.nextDouble();
+
+        patient.setName(name);
+        patient.setAge(age);
+        patient.setHeight(height);
+        patient.setWeight(weight);
+
     }
 }
 
