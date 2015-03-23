@@ -7,27 +7,26 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         System.out.println("BMI Manager");
-        Patient patient = new Patient();
+        Patients patients = new Patients(10);
         running: while (true) {
-            System.out.println("Please select from the " +
-                    "following menu options:\n" +
-                    "\t1. Add new Patient\n" +
-                    "\t2. View patient\n" +
-                    "\t3. Exit\n");
+            printMenu();
             System.out.println("Enter choice: ");
             Scanner scanner = new Scanner(System.in);
             int choice = scanner.nextInt();
             scanner.nextLine();
 
             switch (choice) {
-                case 1: {addPatient(patient,scanner);
-
-
-
-                    break;
+                case 1: {
+                    if (patients.isFull()) {
+                        System.out.println("Database is full");
+                    } else {
+                        patients.add(createPatient(scanner));
+                        break;
+                    }
                 }
+
                 case 2: {
-                    viewPatient(patient);
+                    viewPatients(patients);
 
                     break;
                 }
@@ -41,30 +40,39 @@ public class App {
         }
     }
 
-    private static void viewPatient(Patient patient){
-        String output = String.format("Patients name %s ",
-                patient.getName());
-        String output1 = String.format("patients age %d",
-                patient.getAge());
-        String output2 = String.format("patients BMI %.2f",
-                patient.getBMI());
-
-        System.out.println();
+    private static void printMenu() {
+        System.out.println("Please select from the " +
+                "following menu options:\n" +
+                "\t1. Add new Patient\n" +
+                "\t2. View patient\n" +
+                "\t3. Exit\n");
     }
-    private static void addPatient(Patient patient,Scanner scanner){
+
+    private static void viewPatients(Patients patients) {
+        for (int i = 0; i < patients.count(); ++i) {
+            Patient patient = patients.get(i);
+            String message = String.format("Name: %s Age: %d BMI: %.2f",
+                    patient.getName(), patient.getAge(), patient.getBMI());
+            System.out.println(message);
+        }
+    }
+
+
+
+    private static Patient createPatient (Scanner scanner){
         System.out.println("Enter patients name: ");
         String name = scanner.nextLine();
+
         System.out.println("What is patients age: ");
         int age = scanner.nextInt();
+
         System.out.println("Enter patients height");
         double height = scanner.nextDouble();
+
         System.out.println("Enter patients weight");
         double weight = scanner.nextDouble();
 
-        patient.setName(name);
-        patient.setAge(age);
-        patient.setHeight(height);
-        patient.setWeight(weight);
+       return new Patient(name,age,height,weight);
 
     }
 }
