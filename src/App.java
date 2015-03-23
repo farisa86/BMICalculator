@@ -21,8 +21,8 @@ public class App {
                         System.out.println("Database is full");
                     } else {
                         patients.add(createPatient(scanner));
-                        break;
                     }
+                    break;
                 }
 
                 case 2: {
