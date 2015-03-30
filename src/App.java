@@ -113,7 +113,11 @@ public class App {
         System.out.println("Enter the name to remove");
         String name = scanner.nextLine();
         for (Patient p : patients.records){
-            if (p.getName().equals((name));
+            if (p.getName().equals(name)){
+                patients.records.remove(p);
+                break;
+
+            }
         }
     }
 }
