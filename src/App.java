@@ -50,7 +50,7 @@ public class App {
                 "\t1. Add new Patient\n" +
                 "\t2. View Patient\n" +
                 "\t3. Update Patient\n" +
-                "\t4.remove Patient"
+                "\t4. Remove Patient\n" +
                 "\t5. Exit\n");
     }
 
