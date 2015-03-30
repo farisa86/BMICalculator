@@ -26,6 +26,21 @@ public class Patient {
         return weight / Math.pow(height, 2);
     }
 
+    public void setName(String newName){
+        name = newName;
+
+    }
+    public void setAge(int newAge){
+        age = newAge;
+    }
+
+    public void setWeight(double newWeight) {
+        weight = newWeight;
+    }
+    public void setHeight(double newHeight){height = newHeight;
+    }
+
+
 }
 
 

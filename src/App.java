@@ -16,10 +16,10 @@ public class App {
             scanner.nextLine();
 
             switch (choice) {
-                case 1: {
-                    patients.add(createPatient(scanner));
-                    
-                    break;
+                        case 1: {
+                            patients.add(createPatient(scanner));
+
+                            break;
                 }
 
                 case 2: {
@@ -27,7 +27,12 @@ public class App {
 
                     break;
                 }
+
                 case 3: {
+                    Updatepatient(patients, scanner);
+                    break;
+                }
+                case 4: {
                     System.out.println("Good bye!");
                     break running;
 
@@ -38,11 +43,15 @@ public class App {
     }
 
     private static void printMenu() {
+
+
         System.out.println("Please select from the " +
                 "following menu options:\n" +
                 "\t1. Add new Patient\n" +
-                "\t2. View patient\n" +
-                "\t3. Exit\n");
+                "\t2. View Patient\n" +
+                "\t3. Update Patient\n" +
+                "\t4.remove Patient"
+                "\t5. Exit\n");
     }
 
     private static void viewPatients(Patients patients) {
@@ -72,6 +81,42 @@ public class App {
        return new Patient(name,age,height,weight);
 
     }
+
+    public static void Updatepatient(Patients patients, Scanner scanner){
+        System.out.println("Enter name");
+        String name = scanner.nextLine();
+        for (Patient p : patients.records){
+            if (p.getName().equals((name))){
+                System.out.println("Enter new name");
+                String newName = scanner.nextLine();
+                p.setName(newName);
+
+                System.out.println("Enter new age");
+                int newAge = scanner.nextInt();
+                p.setAge(newAge);
+
+                System.out.println("Enter new weight");
+                double newWeight = scanner.nextDouble();
+                p.setWeight(newWeight);
+
+                System.out.println("Enter new height");
+                double newHeight = scanner.nextDouble();
+                p.setHeight(newHeight);
+                break;
+
+            }
+
+        }
+
+    }
+    public static void Removepatient (Patients patients, Scanner scanner){
+        System.out.println("Enter the name to remove");
+        String name = scanner.nextLine();
+        for (Patient p : patients.records){
+            if (p.getName().equals((name));
+        }
+    }
 }
+
 
 
